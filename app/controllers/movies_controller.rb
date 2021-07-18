@@ -47,7 +47,7 @@ class MoviesController < ApplicationController
 
 	@checked = {}
 	@all_ratings = ['G','PG','PG-13','R']
-	@@ratings_to_show = ['G']
+	@ratings_to_show = ['G']
 end
 		
 
