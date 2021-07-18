@@ -47,8 +47,9 @@ class MoviesController < ApplicationController
 
 	@checked = {}
 	@all_ratings = ['G','PG','PG-13','R']
+	@@ratings_to_show = ['G']
 end
-@@ratings_to_show = ['G']		
+		
 
   def new
     # default: render 'new' template
