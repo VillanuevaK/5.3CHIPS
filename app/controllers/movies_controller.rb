@@ -19,12 +19,12 @@ class MoviesController < ApplicationController
 	@changes_made = 0   
 
   if(@checked != nil)
-	@ratings_to_show = @checked		
+#	@ratings_to_show = @checked		
 	@movies= @movies.find_all{ |movie| @checked.hs_key?(movie.rating) and @checked[movie.rating]==true}
     end 
-  if(@checked == nil)
-	  @ratings_to_show = []
-  end
+ # if(@checked == nil)
+#	  @ratings_to_show = []
+ # end
 
 
 	if(params[:sort].to_s == 'title')
@@ -41,9 +41,11 @@ class MoviesController < ApplicationController
 
 	if(params[:ratings] != nil)
 	session[:ratings] = params[:ratings]
+	@ratings_to_show = params[:ratings]
 	@movies = @movies.find_all{ |movie| params[:ratings].has_key?(movie.rating) }
 	elsif(session.has_key?(:ratings) )
       	params[:ratings] = session[:ratings]
+	@ratings_to_show = params[:ratings]
       	@changes_made = @changes_made +1
 	end
 
