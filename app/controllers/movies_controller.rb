@@ -6,9 +6,48 @@ class MoviesController < ApplicationController
     # will render app/views/movies/show.<extension> by default
   end
 
-  def index
-    @movies = Movie.all
-  end
+
+
+
+
+def index
+    @all_ratings = Movie.all_ratings
+    @saved_ratings = {}
+    
+    if params[:ratings] != nil
+      @selected_ratings = params[:ratings]
+      @movies = Movie.where(:rating => @selected_ratings.keys)
+      
+      @all_ratings.each do |rating|
+        if @selected_ratings != nil && @selected_ratings[rating] != nil
+          @saved_ratings[rating] = true
+        else
+          @saved_ratings[rating] = false
+        end
+      end
+      session[:ratings] = params[:ratings]
+    else
+       @all_ratings.each do |rating|
+         @saved_ratings[rating] = true
+       end
+       @movies = Movie.all
+    end 
+    
+    @sort = ""
+    if params[:sort] != nil 
+      field = params[:sort]
+      @movies = Movie.order(field)
+      @sort = field
+      session[:sort] = params[:sort]
+    else
+      #redirect_to controller: "movies", action: "index", sort: session[:sort]
+    end
+end
+
+
+
+
+
 
   def new
     # default: render 'new' template
