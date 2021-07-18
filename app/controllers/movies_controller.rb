@@ -45,9 +45,10 @@ class MoviesController < ApplicationController
     	redirect_to movies_path(:sort=>params[:sort], :ratings =>params[:ratings] )
     	end
 
+	@ratings_to_show = @checked
 	@checked = {}
 	@all_ratings = ['G','PG','PG-13','R']
-	@ratings_to_show = ['G']
+	
 end
 		
 
