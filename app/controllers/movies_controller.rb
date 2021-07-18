@@ -17,11 +17,15 @@ class MoviesController < ApplicationController
     @movies = Movie.all
    
 	@changes_made = 0   
-@ratings_to_show = []
+
   if(@checked != nil)
 	@ratings_to_show = @checked		
 	@movies= @movies.find_all{ |movie| @checked.hs_key?(movie.rating) and @checked[movie.rating]==true}
     end 
+  if(@checked == nil)
+	  @ratings_to_show = []
+  end
+
 
 	if(params[:sort].to_s == 'title')
 	session[:sort] = params[:sort]
