@@ -21,7 +21,7 @@
     <tr>
 	    <!--	    <th>Movie Title</th> -->
 	    <!-- <th><a href=" ">Movie Title</a></th> -->
-	    <th class="col-1" > <%= link_to 'Movie Title', movies_path(:sort=>'title', :ratings =>params[:ratings]) %> </th> 
+	    <th class=" <%= 'title' == 'title' ? 'col-1', ''  %> " > <%= link_to 'Movie Title', movies_path(:sort=>'title', :ratings =>params[:ratings]) %> </th> 
 
  	<th>Rating</th>
 
