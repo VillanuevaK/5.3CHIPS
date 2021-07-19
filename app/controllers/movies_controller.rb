@@ -33,6 +33,16 @@ def index
 		end 
 	end 		
 
+	if(params[:ratings] == nil and session.has_key?(:ratings) )
+		params[:ratings] = session[:ratings]
+                @ratings_to_show = params[:ratings]
+                @flipped = true
+	elsif( params[:ratings] )
+		session[:ratings] = params[:ratings]
+                @ratings_to_show = params[:ratings]
+                @allM = @allM.find_all{ |movie| params[:ratings].has_key?(movie.rating) }
+	end
+=begin	
 	if(params[:ratings] != nil)
 		session[:ratings] = params[:ratings]
 		@ratings_to_show = params[:ratings]
@@ -42,7 +52,7 @@ def index
 		@ratings_to_show = params[:ratings]
 		@flipped = true
 	end
-
+=end
 	if(@flipped)
     		redirect_to movies_path(:sort=>params[:sort], :ratings =>params[:ratings] )
     	end
