@@ -21,38 +21,36 @@ def index
    
   @changes_made = 0   
 
-  if(@checked != nil)
-#	@ratings_to_show = @checked		
+ # if(@checked != nil)		
     @movies= @movies.find_all{ |movie| @checked.hs_key?(movie.rating) and @checked[movie.rating]==true}
-  end 
+ # end 
  
 	if(params[:sort].to_s == 'title')
-	session[:sort] = params[:sort]
-	@movies = @movies.sort_by{|movie| movie.title }
+		session[:sort] = params[:sort]
+		@movies = @movies.sort_by{|movie| movie.title }
 	elsif(params[:sort].to_s == 'release_date')
-	session[:sort] = params[:sort]
-	@movies= @movies.sort_by{|movie| movie.release_date.to_s }
+		session[:sort] = params[:sort]
+		@movies= @movies.sort_by{|movie| movie.release_date.to_s }
 	elsif(session.has_key?(:sort) )
-	params[:sort] = session[:sort]
-       
-	@changes_made = @changes_made +1
+		params[:sort] = session[:sort]
+		@changes_made = @changes_made +1
 	end
 
 	if(params[:ratings] != nil)
-	session[:ratings] = params[:ratings]
-	@ratings_to_show = params[:ratings]
-	@movies = @movies.find_all{ |movie| params[:ratings].has_key?(movie.rating) }
+		session[:ratings] = params[:ratings]
+		@ratings_to_show = params[:ratings]
+		@movies = @movies.find_all{ |movie| params[:ratings].has_key?(movie.rating) }
 	elsif(session.has_key?(:ratings) )
-      	params[:ratings] = session[:ratings]
-	@ratings_to_show = params[:ratings]
-      	@changes_made = @changes_made +1
+      		params[:ratings] = session[:ratings]
+		@ratings_to_show = params[:ratings]
+      		@changes_made = @changes_made +1
 	end
 
 	if(@changes_made >=1)
-    	redirect_to movies_path(:sort=>params[:sort], :ratings =>params[:ratings] )
+    		redirect_to movies_path(:sort=>params[:sort], :ratings =>params[:ratings] )
     	end
 
-	@checked = {}
+#	@checked = {}
 	@all_ratings = ['G','PG','PG-13','R']
 	
 end
