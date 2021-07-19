@@ -22,7 +22,7 @@ def index
   @changes_made = 0   
 
  # if(@checked != nil)		
-    @movies= @movies.find_all{ |movie| @checked.hs_key?(movie.rating) and @checked[movie.rating]==true}
+#    @movies= @movies.find_all{ |movie| @checked.hs_key?(movie.rating) and @checked[movie.rating]==true}
  # end 
  
 	if(params[:sort].to_s == 'title')
