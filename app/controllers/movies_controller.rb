@@ -46,7 +46,7 @@ redirect_to movies_path(:sort=>params[:sort], :ratings =>params[:ratings] )
 	end
 
 #	if(@flipped)
- #   		redirect_to movies_path(:sort=>params[:sort], :ratings =>params[:ratings] )
+    		redirect_to movies_path(:sort=>params[:sort], :ratings =>params[:ratings] )
   #  	end
 
 end
