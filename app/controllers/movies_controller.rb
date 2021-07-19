@@ -46,7 +46,7 @@ def index
 @flipped = true
 	end
 
-	if(flipped)
+	if(@flipped)
     		redirect_to movies_path(:sort=>params[:sort], :ratings =>params[:ratings] )
     	end
 
