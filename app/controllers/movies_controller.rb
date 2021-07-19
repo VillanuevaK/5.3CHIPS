@@ -18,10 +18,8 @@ end
 
 def index
   @flipped = false
-  @all_ratings = ['G','PG','PG-13','R']	
-  
+  @all_ratings = ['G','PG','PG-13','R']	 
   @allM = Movie.all
-
   @ps = params[:sort]
 
        if(@ps == 'title')
@@ -48,7 +46,7 @@ def index
 	if(@flipped)
     		redirect_to movies_path(:sort=>params[:sort], :ratings =>params[:ratings] )
     	end
-
+i
 end
 		
 
