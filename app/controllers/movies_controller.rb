@@ -31,7 +31,7 @@ def index
 	elsif(session.has_key?(:sort) )
 		params[:sort] = session[:sort]
 		@flipped = true
-redirect_to movies_path(:sort=>params[:sort], :ratings =>params[:ratings] )
+#redirect_to movies_path(:sort=>params[:sort], :ratings =>params[:ratings] )
 	end
 
 	if(params[:ratings] != nil)
@@ -42,12 +42,12 @@ redirect_to movies_path(:sort=>params[:sort], :ratings =>params[:ratings] )
       		params[:ratings] = session[:ratings]
 		@ratings_to_show = params[:ratings]
 		@flipped = true
-redirect_to movies_path(:sort=>params[:sort], :ratings =>params[:ratings] )
+#redirect_to movies_path(:sort=>params[:sort], :ratings =>params[:ratings] )
 	end
 
-#	if(@flipped)
+	if(@flipped)
     		redirect_to movies_path(:sort=>params[:sort], :ratings =>params[:ratings] )
-  #  	end
+    	end
 
 end
 		
