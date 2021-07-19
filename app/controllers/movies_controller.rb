@@ -9,19 +9,22 @@ class MoviesController < ApplicationController
     @movie = Movie.find(id) # look up movie by unique ID
     # will render app/views/movies/show.<extension> by default
   end
-   def movie_ratings
+
+def movie_ratings
   Movie.select(:rating).uniq.map(&:rating)
 #Movie.select('distinct rating').map(&:ratng)
-  end
-   def index
-    @movies = Movie.all
+end
+
+
+def index
+  @movies = Movie.all
    
-	@changes_made = 0   
+  @changes_made = 0   
 
   if(@checked != nil)
 #	@ratings_to_show = @checked		
-	@movies= @movies.find_all{ |movie| @checked.hs_key?(movie.rating) and @checked[movie.rating]==true}
-    end 
+    @movies= @movies.find_all{ |movie| @checked.hs_key?(movie.rating) and @checked[movie.rating]==true}
+  end 
  # if(@checked == nil)
 #	  @ratings_to_show = []
  # end
