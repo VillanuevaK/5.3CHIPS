@@ -33,17 +33,6 @@ def index
 		end 
 	end 		
 
-=begin       if(@ps == 'title')
-		session[:sort] = @ps
-		@allM = @allM.sort_by{|movie| movie.title }
-	elsif(@ps == 'release_date')
-		session[:sort] = @ps
-		@allM = @allM.sort_by{|movie| movie.release_date.to_s }
-	elsif(session.has_key?(:sort) )
-		params[:sort] = session[:sort]
-		@flipped = true
-	end
-=end
 	if(params[:ratings] != nil)
 		session[:ratings] = params[:ratings]
 		@ratings_to_show = params[:ratings]
