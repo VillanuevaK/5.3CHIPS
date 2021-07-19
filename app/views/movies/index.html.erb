@@ -21,7 +21,7 @@
     <tr>
 	    <!--	    <th>Movie Title</th> -->
 	    <!-- <th><a href=" ">Movie Title</a></th> -->
-	    <th> <%= params[:sort] == "title" ? {:class => "hilite"} :{}, :id => 'title_header',  link_to 'Movie Title', movies_path(:sort=>'title', :ratings =>params[:ratings]) %> </th> 
+	    <th> <%= :id => 'title_header',  link_to 'Movie Title', movies_path(:sort=>'title', :ratings =>params[:ratings]) %> </th> 
 
  	<th>Rating</th>
 
