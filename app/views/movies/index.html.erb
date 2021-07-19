@@ -23,8 +23,10 @@
 	    <!-- <th><a href=" ">Movie Title</a></th> -->
  <th> <%= link_to 'Movie Title', movies_path(:sort=>'title', :ratings =>params[:ratings]) %> </th> 
 
-      <th>Rating</th>
-      <th>Release Date</th>
+ 	<th>Rating</th>
+
+<th> <%= link_to 'Release Date', movies_path(:sort=>'release_date', :ratings =>params[:ratings]) %> </th>
+ 
       <th>More Info</th>
     </tr>
   </thead>
