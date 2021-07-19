@@ -20,16 +20,16 @@ def index
   @flipped = false
   @all_ratings = ['G','PG','PG-13','R']	
   
-  @movies = Movie.all
+  @allM = Movie.all
 
- @ps = params[:sort]
+  @ps = params[:sort]
 
        if(@ps == 'title')
-		session[:sort] = params[:sort]
-		@movies = @movies.sort_by{|movie| movie.title }
+		session[:sort] = @ps
+		@allM = @allM.sort_by{|movie| movie.title }
 	elsif(@ps == 'release_date')
-		session[:sort] = params[:sort]
-		@movies= @movies.sort_by{|movie| movie.release_date.to_s }
+		session[:sort] = @ps
+		@allM = @allM.sort_by{|movie| movie.release_date.to_s }
 	elsif(session.has_key?(:sort) )
 		params[:sort] = session[:sort]
 		@flipped = true
@@ -38,7 +38,7 @@ def index
 	if(params[:ratings] != nil)
 		session[:ratings] = params[:ratings]
 		@ratings_to_show = params[:ratings]
-		@movies = @movies.find_all{ |movie| params[:ratings].has_key?(movie.rating) }
+		@allM = @allM.find_all{ |movie| params[:ratings].has_key?(movie.rating) }
 	elsif(session.has_key?(:ratings) )
       		params[:ratings] = session[:ratings]
 		@ratings_to_show = params[:ratings]
