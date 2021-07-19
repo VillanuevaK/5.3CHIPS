@@ -21,11 +21,7 @@ def index
    
   @changes_made = 0   
 
- # if(@checked != nil)		
-#    @movies= @movies.find_all{ |movie| @checked.hs_key?(movie.rating) and @checked[movie.rating]==true}
- # end 
- 
-	if(params[:sort].to_s == 'title')
+  if(params[:sort].to_s == 'title')
 		session[:sort] = params[:sort]
 		@movies = @movies.sort_by{|movie| movie.title }
 	elsif(params[:sort].to_s == 'release_date')
@@ -50,9 +46,7 @@ def index
     		redirect_to movies_path(:sort=>params[:sort], :ratings =>params[:ratings] )
     	end
 
-#	@checked = {}
 	@all_ratings = ['G','PG','PG-13','R']
-	
 end
 		
 
