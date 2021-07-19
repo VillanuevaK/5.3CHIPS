@@ -22,16 +22,17 @@ def index
   
   @movies = Movie.all
 
-       if(params[:sort].to_s == 'title')
+ @ps = params[:sort]
+
+       if(@ps == 'title')
 		session[:sort] = params[:sort]
 		@movies = @movies.sort_by{|movie| movie.title }
-	elsif(params[:sort].to_s == 'release_date')
+	elsif(@ps == 'release_date')
 		session[:sort] = params[:sort]
 		@movies= @movies.sort_by{|movie| movie.release_date.to_s }
 	elsif(session.has_key?(:sort) )
 		params[:sort] = session[:sort]
 		@flipped = true
-#redirect_to movies_path(:sort=>params[:sort], :ratings =>params[:ratings] )
 	end
 
 	if(params[:ratings] != nil)
@@ -42,7 +43,6 @@ def index
       		params[:ratings] = session[:ratings]
 		@ratings_to_show = params[:ratings]
 		@flipped = true
-#redirect_to movies_path(:sort=>params[:sort], :ratings =>params[:ratings] )
 	end
 
 	if(@flipped)
