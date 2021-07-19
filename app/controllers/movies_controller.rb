@@ -22,7 +22,18 @@ def index
   @allM = Movie.all
   @ps = params[:sort]
 
-       if(@ps == 'title')
+	puts case @ps
+	when 'title', 'release_date'
+	       session[:sort] = @ps
+		@allM = @ps == 'title' ? @allM.sort_by{|movie| movie.title } : @allM.sort_by{|movie| movie.release_date.to_s }
+ 	else
+		if(session.has_key?(:sort) )
+			params[:sort] = session[:sort] 
+	     		@flipped = true
+		end 
+	end 		
+
+=begin       if(@ps == 'title')
 		session[:sort] = @ps
 		@allM = @allM.sort_by{|movie| movie.title }
 	elsif(@ps == 'release_date')
@@ -32,7 +43,7 @@ def index
 		params[:sort] = session[:sort]
 		@flipped = true
 	end
-
+=end
 	if(params[:ratings] != nil)
 		session[:ratings] = params[:ratings]
 		@ratings_to_show = params[:ratings]
